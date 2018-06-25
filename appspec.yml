@@ -1,0 +1,23 @@
+version: 0.0
+os: windows
+files:
+ - source: \bin\Debug\netcoreapp2.0
+   destination: C:\ProgramData\CDapplicationRoot
+ - source: \nestedscripts
+   destination: C:\ProgramData\CDapplicationRoot\NestedFolder
+hooks:
+  ApplicationStop:
+    - location: \codedeployscripts\ApplicationStop.0.0.ps1
+      timeout: 25
+  BeforeInstall:
+    - location: \codedeployscripts\BeforeInstall.0.0.ps1
+      timeout: 25
+  AfterInstall:
+    - location: \codedeployscripts\AfterInstall.0.0.ps1
+      timeout: 25
+  ApplicationStart:
+    - location: \codedeployscripts\ApplicationStart.0.0.ps1
+      timeout: 25
+  ValidateService:
+    - location: \codedeployscripts\ValidateService.0.0.ps1
+      timeout: 25
